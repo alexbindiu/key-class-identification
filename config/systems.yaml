@@ -1,0 +1,9 @@
+# The repositories, one entry per system
+# Fields:
+#   group:          sora | new
+#   repo:           GitHub URL
+#   commit:         tag or commit SHA (snapshot)
+#   source:         folder with the main Java sources
+#   package_prefix: packages analysed in the paper (sora only)
+#   doc:            developer document used for ground truth (new only)
+#   paper_classes:  number of classes reported in the paper (sora only)
