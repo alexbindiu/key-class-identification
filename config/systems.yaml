@@ -2,8 +2,143 @@
 # Fields:
 #   group:          sora | new
 #   repo:           GitHub URL
-#   commit:         tag or commit SHA (snapshot)
-#   source:         folder with the main Java sources
-#   package_prefix: packages analysed in the paper (sora only)
+#   commit:         commit SHA (snapshot)
+#   source:         folders with the main Java sources
+#   exclude:        folders inside source that are left out
+#   package_prefix: only classes in this package are kept (if set)
 #   doc:            developer document used for ground truth (new only)
 #   paper_classes:  number of classes reported in the paper (sora only)
+# Always left out: tests, examples/samples, benchmarks.
+
+# --- Sora & Chirila (2019) ---
+
+ant:
+  group: sora
+  repo: https://github.com/apache/ant
+  commit: 026aec5fec7813d0f547ab8c34fdc52935ef4d18   # tag ANT_161
+  source: [src/main]
+  exclude: []
+  paper_classes: 524
+
+hibernate:
+  group: sora
+  repo: https://github.com/hibernate/hibernate-orm
+  commit: 1c915087a1231688c9745336492e24965aaaf1cf   # tag 5.2.12
+  source: [.]
+  exclude: [documentation, hibernate-envers/src/demo]
+  paper_classes: 4450
+
+log4j:
+  group: sora
+  repo: https://github.com/apache/logging-log4j2
+  commit: 6275d8aac4e392eacd81d942a1b97856c92b698f   # tag log4j-2.10.0
+  source: [.]
+  exclude: [log4j-perf, log4j-samples, log4j-api-java9]
+  paper_classes: 1049
+
+tomcat:
+  group: sora
+  repo: https://github.com/apache/tomcat
+  commit: f496ba0669fcdc034683aab80e627de5aee50b8e   # tag 9.0.4
+  source: [java]
+  exclude: []
+  package_prefix: org.apache.catalina
+  paper_classes: 680
+
+wro4j:
+  group: sora
+  repo: https://github.com/wro4j/wro4j
+  commit: 87faeda0c955a277abdc5fc9c80290d97ef7d3e4   # tag v1.6.3
+  source: [.]
+  exclude: [wro4j-examples, wro4j-grails-plugin]
+  paper_classes: 336
+
+argouml:
+  group: sora
+  repo: https://github.com/argouml-tigris-org/argouml
+  commit: 68eb73934ac83368169ec9d5d0d7b04dfb4eabef   # last commit before 0.9.5 (2001-10-19)
+  source: [src_new]
+  exclude: []
+  paper_classes: 852
+
+jmeter:
+  group: sora
+  repo: https://github.com/apache/jmeter
+  commit: 1e4c4d9e07608e397b0078c1ff73db05d294b21c   # last commit before 2.0.1 (2004-05-22)
+  source: [src]
+  exclude: [src/htmlparser]
+  paper_classes: 280
+
+# --- New systems (but with developer documentation before 2023) ---
+
+obevo:
+  group: new
+  repo: https://github.com/goldmansachs/obevo
+  commit: 72c4f6ec04731df8a482abc8131d28b3cf621b48
+  source: [.]
+  exclude: [obevo-dbmetadata-impl/src/main/java/schemacrawler]
+  doc: obevo-site/src/site/markdown/design-walkthrough.md
+
+ehcache3:
+  group: new
+  repo: https://github.com/ehcache/ehcache3
+  commit: 39a7588d476770c37592b4795e03651aa10172dc
+  source: [.]
+  exclude: [demos, core-spi-test, impl/src/slow-test]
+  doc: docs/src/docs/asciidoc/developer/index.adoc
+
+rogue-cloud:
+  group: new
+  repo: https://github.com/codewind-resources/rogue-cloud
+  commit: 9a566aaac4d583e99fe7ba7f31d52f64764b6453
+  source: [.]
+  exclude: []
+  doc: docs/RCDevArchitecture.md
+
+camel-language-server:
+  group: new
+  repo: https://github.com/camel-tooling/camel-language-server
+  commit: d044a903118dccff01afd8d72f30dc7dc28a4f45
+  source: [src/main/java]
+  exclude: []
+  doc: Contributing.md
+
+geowave:
+  group: new
+  repo: https://github.com/locationtech/geowave
+  commit: ac5718e5da61a858e41f5721af95ecc76ebc0780
+  source: [.]
+  exclude: []
+  doc: docs/content/devguide/030-architecture.adoc
+
+jpsxdec:
+  group: new
+  repo: https://github.com/m35/jpsxdec
+  commit: bd3575dce1c9941319c8e8428e32d02b0598fce2
+  source: [jpsxdec/src]
+  exclude: []
+  doc: jpsxdec/jPSXdec-design.md
+
+sirius-kernel:
+  group: new
+  repo: https://github.com/scireum/sirius-kernel
+  commit: 4a115c2828b0d865d97ca069daa7245825de67ce
+  source: [src/main/java]
+  exclude: []
+  doc: README.md
+
+rxjava:
+  group: new
+  repo: https://github.com/ReactiveX/RxJava
+  commit: 837ca6b6f18b9ce5948705ae68149642c32aba99
+  source: [src/main/java]
+  exclude: []
+  doc: DESIGN.md
+
+exasol-testcontainers:
+  group: new
+  repo: https://github.com/exasol/exasol-testcontainers
+  commit: 1926d4b6f788e6f3604cd0b6fb710c6dcf64be89
+  source: [src/main/java]
+  exclude: []
+  doc: doc/design.md
