@@ -1,0 +1,13 @@
+# Key classes of argouml (Sora & Chirila 2019, Table A.7), resolved by src/resolve_sora.py
+Argo:            org.argouml.application.api.Argo
+Configuration:   org.argouml.application.api.Configuration
+ControlMech:     org.argouml.cognitive.critics.ControlMech
+Critic:          org.argouml.cognitive.critics.Critic
+CrUML:           org.argouml.uml.cognitive.critics.CrUML
+Designer:        org.argouml.cognitive.Designer
+History:         org.argouml.kernel.History
+Project:         org.argouml.kernel.Project
+ProjectBrowser:  org.argouml.ui.ProjectBrowser
+ToDoItem:        org.argouml.cognitive.ToDoItem
+ToDoList:        org.argouml.cognitive.ToDoList
+Wizard:          org.argouml.kernel.Wizard

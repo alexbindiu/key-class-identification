@@ -1,0 +1,26 @@
+# Key classes from Sora & Chirila (2019), Table A.7 (simple names, as in the paper)
+
+ant: [ElementHandler, IntrospectionHelper, Main, Project, ProjectHelper, RuntimeConfigurable,
+      Target, Task, TaskContainer, UnknownElement]
+
+hibernate: [Column, Configuration, ConnectionProvider, Criteria, Criterion, Projection, Query,
+            Session, SessionFactory, SessionFactoryImplementor, SessionImplementor, Table,
+            Transaction, Type]
+
+log4j: [Appender, Configuration, Filter, Layout, Logger, LoggerConfig, LoggerContext, StrLookup,
+        StrSubstitutor]
+
+tomcat: [Bootstrap, Catalina, Connector, Container, Context, CoyoteAdapter, Engine, Host, HostConfig,
+         LifecycleListener, Loader, Manager, Pipeline, Realm, Request, Response, Server, Service,
+         Session, StandardContext, StandardEngine, StandardHost, StandardPipeline, StandardServer,
+         StandardService, StandardWrapper, Valve, Wrapper]
+
+wro4j: [Group, Resource, ResourcePostProcessor, ResourcePreProcessor, ResourceType, UriLocator,
+        UriLocatorFactory, WroFilter, WroManager, WroManagerFactory, WroModel, WroModelFactory]
+
+argouml: [Argo, Configuration, ControlMech, Critic, CrUML, Designer, History, Project,
+          ProjectBrowser, ToDoItem, ToDoList, Wizard]
+
+jmeter: [AbstractAction, JMeterEngine, JMeterGUIComponent, JMeterThread, JMeterTreeModel,
+         PreCompiler, Sampler, SampleResult, TestCompiler, TestElement, TestListener, TestPlan,
+         TestPlanGui, ThreadGroup]

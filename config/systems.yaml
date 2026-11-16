@@ -74,7 +74,7 @@ jmeter:
 obevo:
   group: new
   repo: https://github.com/goldmansachs/obevo
-  commit: 72c4f6ec04731df8a482abc8131d28b3cf621b48
+  commit: 330755e89f61c7b060cb602c6152bd4bd8b8b727   # doc version 2018-05-08, code still all Java
   source: [.]
   exclude: [obevo-dbmetadata-impl/src/main/java/schemacrawler]
   doc: obevo-site/src/site/markdown/design-walkthrough.md
@@ -116,7 +116,7 @@ jpsxdec:
   repo: https://github.com/m35/jpsxdec
   commit: bd3575dce1c9941319c8e8428e32d02b0598fce2
   source: [jpsxdec/src]
-  exclude: []
+  exclude: [jpsxdec/src/argparser, jpsxdec/src/com, jpsxdec/src/javax, jpsxdec/src/org]   # bundled third-party code
   doc: jpsxdec/jPSXdec-design.md
 
 sirius-kernel:

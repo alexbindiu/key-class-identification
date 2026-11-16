@@ -1,0 +1,29 @@
+# Key classes of tomcat (Sora & Chirila 2019, Table A.7), resolved by src/resolve_sora.py
+Bootstrap:          org.apache.catalina.startup.Bootstrap
+Catalina:           org.apache.catalina.startup.Catalina
+Connector:          org.apache.catalina.connector.Connector
+Container:          org.apache.catalina.Container
+Context:            org.apache.catalina.Context
+CoyoteAdapter:      org.apache.catalina.connector.CoyoteAdapter
+Engine:             org.apache.catalina.Engine
+Host:               org.apache.catalina.Host
+HostConfig:         org.apache.catalina.startup.HostConfig
+LifecycleListener:  org.apache.catalina.LifecycleListener
+Loader:             org.apache.catalina.Loader
+Manager:            org.apache.catalina.Manager
+Pipeline:           org.apache.catalina.Pipeline
+Realm:              org.apache.catalina.Realm
+Request:            org.apache.catalina.connector.Request
+Response:           org.apache.catalina.connector.Response   # chosen from 2 candidates
+Server:             org.apache.catalina.Server
+Service:            org.apache.catalina.Service
+Session:            org.apache.catalina.Session
+StandardContext:    org.apache.catalina.core.StandardContext
+StandardEngine:     org.apache.catalina.core.StandardEngine
+StandardHost:       org.apache.catalina.core.StandardHost
+StandardPipeline:   org.apache.catalina.core.StandardPipeline
+StandardServer:     org.apache.catalina.core.StandardServer
+StandardService:    org.apache.catalina.core.StandardService
+StandardWrapper:    org.apache.catalina.core.StandardWrapper
+Valve:              org.apache.catalina.Valve
+Wrapper:            org.apache.catalina.Wrapper

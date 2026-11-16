@@ -1,6 +1,7 @@
-"""Clone every system from config/systems.yaml and check out its snapshot commit
+"""Clones the repos from config/systems.yaml and checks out the chosen commits.
+Repos that are already cloned are only checked, not cloned again.
 
-Usage: python src/fetch.py [system ...]   (no arguments = all systems)
+Usage: python src/fetch.py [system ...]
 """
 import subprocess
 import sys
@@ -26,7 +27,7 @@ def fetch(name, system):
         head = git("rev-parse", "HEAD", cwd=target)
         status = "ok (already cloned)" if head == system["commit"] else f"WRONG COMMIT {head}"
         return status
-    # full clone: the history is needed for the Git features
+    # full clone, we need the history
     git("clone", "--quiet", "-c", "core.longpaths=true", system["repo"], str(target))
     git("-c", "advice.detachedHead=false", "checkout", "--quiet", system["commit"], cwd=target)
     return "cloned"

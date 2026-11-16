@@ -1,0 +1,11 @@
+# Key classes of ant (Sora & Chirila 2019, Table A.7), resolved by src/resolve_sora.py
+ElementHandler:       org.apache.tools.ant.helper.ProjectHelper2   # inner class of ProjectHelper2
+IntrospectionHelper:  org.apache.tools.ant.IntrospectionHelper
+Main:                 org.apache.tools.ant.Main
+Project:              org.apache.tools.ant.Project
+ProjectHelper:        org.apache.tools.ant.ProjectHelper
+RuntimeConfigurable:  org.apache.tools.ant.RuntimeConfigurable
+Target:               org.apache.tools.ant.Target
+Task:                 org.apache.tools.ant.Task
+TaskContainer:        org.apache.tools.ant.TaskContainer
+UnknownElement:       org.apache.tools.ant.UnknownElement

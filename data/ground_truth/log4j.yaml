@@ -1,0 +1,10 @@
+# Key classes of log4j (Sora & Chirila 2019, Table A.7), resolved by src/resolve_sora.py
+Appender:        org.apache.logging.log4j.core.Appender
+Configuration:   org.apache.logging.log4j.core.config.Configuration
+Filter:          org.apache.logging.log4j.core.Filter
+Layout:          org.apache.logging.log4j.core.Layout
+Logger:          org.apache.logging.log4j.Logger   # chosen from 2 candidates
+LoggerConfig:    org.apache.logging.log4j.core.config.LoggerConfig
+LoggerContext:   org.apache.logging.log4j.spi.LoggerContext   # chosen from 2 candidates
+StrLookup:       org.apache.logging.log4j.core.lookup.StrLookup
+StrSubstitutor:  org.apache.logging.log4j.core.lookup.StrSubstitutor

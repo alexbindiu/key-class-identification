@@ -1,0 +1,15 @@
+# Key classes of hibernate (Sora & Chirila 2019, Table A.7), resolved by src/resolve_sora.py
+Column:                     org.hibernate.mapping.Column
+Configuration:              org.hibernate.cfg.Configuration
+ConnectionProvider:         org.hibernate.engine.jdbc.connections.spi.ConnectionProvider
+Criteria:                   org.hibernate.Criteria
+Criterion:                  org.hibernate.criterion.Criterion
+Projection:                 org.hibernate.criterion.Projection
+Query:                      org.hibernate.Query   # chosen from 2 candidates
+Session:                    org.hibernate.Session
+SessionFactory:             org.hibernate.SessionFactory
+SessionFactoryImplementor:  org.hibernate.engine.spi.SessionFactoryImplementor
+SessionImplementor:         org.hibernate.engine.spi.SessionImplementor
+Table:                      org.hibernate.mapping.Table   # chosen from 2 candidates
+Transaction:                org.hibernate.Transaction
+Type:                       org.hibernate.type.Type   # chosen from 2 candidates

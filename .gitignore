@@ -2,3 +2,6 @@
 __pycache__/
 *.pyc
 data/repos/
+.idea/
+data/graph/
+data/ground_truth/annotations/claude

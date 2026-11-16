@@ -1,0 +1,13 @@
+# Key classes of wro4j (Sora & Chirila 2019, Table A.7), resolved by src/resolve_sora.py
+Group:                  ro.isdc.wro.model.group.Group
+Resource:               ro.isdc.wro.model.resource.Resource
+ResourcePostProcessor:  ro.isdc.wro.model.resource.processor.ResourcePostProcessor
+ResourcePreProcessor:   ro.isdc.wro.model.resource.processor.ResourcePreProcessor
+ResourceType:           ro.isdc.wro.model.resource.ResourceType
+UriLocator:             ro.isdc.wro.model.resource.locator.UriLocator
+UriLocatorFactory:      ro.isdc.wro.model.resource.locator.factory.UriLocatorFactory
+WroFilter:              ro.isdc.wro.http.WroFilter
+WroManager:             ro.isdc.wro.manager.WroManager
+WroManagerFactory:      ro.isdc.wro.manager.factory.WroManagerFactory
+WroModel:               ro.isdc.wro.model.WroModel
+WroModelFactory:        ro.isdc.wro.model.factory.WroModelFactory

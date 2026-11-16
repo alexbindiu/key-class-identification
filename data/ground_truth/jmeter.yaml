@@ -1,0 +1,15 @@
+# Key classes of jmeter (Sora & Chirila 2019, Table A.7), resolved by src/resolve_sora.py
+AbstractAction:      org.apache.jmeter.gui.action.AbstractAction
+JMeterEngine:        org.apache.jmeter.engine.JMeterEngine
+JMeterGUIComponent:  org.apache.jmeter.gui.JMeterGUIComponent
+JMeterThread:        org.apache.jmeter.threads.JMeterThread
+JMeterTreeModel:     org.apache.jmeter.gui.tree.JMeterTreeModel
+PreCompiler:         org.apache.jmeter.engine.PreCompiler
+Sampler:             org.apache.jmeter.samplers.Sampler
+SampleResult:        org.apache.jmeter.samplers.SampleResult
+TestCompiler:        org.apache.jmeter.threads.TestCompiler
+TestElement:         org.apache.jmeter.testelement.TestElement
+TestListener:        org.apache.jmeter.testelement.TestListener
+TestPlan:            org.apache.jmeter.testelement.TestPlan
+TestPlanGui:         org.apache.jmeter.control.gui.TestPlanGui
+ThreadGroup:         org.apache.jmeter.threads.ThreadGroup
