@@ -5,3 +5,6 @@ data/repos/
 .idea/
 data/graph/
 data/ground_truth/annotations/claude
+data/history/
+data/size/
+data/features/*.csv
