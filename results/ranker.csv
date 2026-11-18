@@ -1,0 +1,9 @@
+project,model,key_classes,recall_at_20,recall_at_30,precision_at_20,precision_at_30
+ant,xgboost,10,0.6,0.7,0.3,0.2333
+hibernate,xgboost,14,0.5714,0.5714,0.4,0.2667
+log4j,xgboost,9,0.7778,0.8889,0.35,0.2667
+tomcat,xgboost,28,0.4643,0.6429,0.65,0.6
+wro4j,xgboost,12,0.8333,0.9167,0.5,0.3667
+argouml,xgboost,12,0.3333,0.4167,0.2,0.1667
+jmeter,xgboost,14,0.3571,0.5714,0.25,0.2667
+mean,xgboost,,0.5625,0.6726,0.3786,0.3095
