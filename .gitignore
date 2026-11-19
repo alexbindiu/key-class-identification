@@ -8,3 +8,4 @@ data/ground_truth/annotations/claude
 data/history/
 data/size/
 data/features/*.csv
+results/feature_groups_without_one.csv

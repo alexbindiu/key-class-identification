@@ -15,7 +15,7 @@ import numpy as np
 from scipy.stats import rankdata
 from xgboost import XGBRanker
 
-from heuristics import CUTOFFS, METRICS, hits_in_top
+from heuristics import METRICS, metrics
 from sources import ROOT
 
 FEATURES = ROOT / "data" / "features" / "raw_features.csv"
@@ -46,41 +46,52 @@ def system_features(rows):
     return names, np.column_stack(columns)
 
 
-def main():
-    sys.stdout.reconfigure(encoding="utf-8")
+def load():
+    """Feature names, and {project: (features, labels)} for every system with ground truth."""
     with open(FEATURES, encoding="utf-8") as f:
         systems = {}
         for row in csv.DictReader(f):
             systems.setdefault(row["project"], []).append(row)
-    labelled = [p for p, rows in systems.items() if rows[0]["is_key_class"] != ""]
-
     data = {}
-    for project in labelled:
-        names, x = system_features(systems[project])
-        data[project] = (x, np.array([int(r["is_key_class"]) for r in systems[project]]))
-    print(f"{len(labelled)} systems, {len(names)} features")
+    for project, rows in systems.items():
+        if rows[0]["is_key_class"] == "":
+            continue
+        names, x = system_features(rows)
+        data[project] = (x, np.array([int(r["is_key_class"]) for r in rows]))
+    return names, data
 
-    results, gain = [], dict.fromkeys(names, 0.0)
-    for test in labelled:
-        train = [p for p in labelled if p != test]
+
+def leave_one_system_out(data, columns):
+    """Trains on all systems but one and scores the one left out, for every system.
+    columns: indices of the features to use.
+    Returns the results per system and the mean gain of each used feature."""
+    results, gain = [], np.zeros(len(columns))
+    for test in data:
+        train = [p for p in data if p != test]
         model = XGBRanker()
-        model.fit(np.vstack([data[p][0] for p in train]),
+        model.fit(np.vstack([data[p][0][:, columns] for p in train]),
                   np.concatenate([data[p][1] for p in train]),
                   qid=np.concatenate([np.full(len(data[p][1]), i) for i, p in enumerate(train)]))
         for feature, value in model.get_booster().get_score(importance_type="total_gain").items():
-            gain[names[int(feature[1:])]] += value / len(labelled)  # "f12" -> 12th feature
-
+            gain[int(feature[1:])] += value / len(data)  # "f12" -> 12th used column
         x, y = data[test]
-        scores = list(model.predict(x))
         labels = list(y)
-        result = {"project": test, "model": "xgboost", "key_classes": sum(labels)}
-        for k in CUTOFFS:
-            hits = hits_in_top(scores, labels, k)
-            result[f"recall_at_{k}"] = round(hits / sum(labels), 4)
-            result[f"precision_at_{k}"] = round(hits / k, 4)
-        results.append(result)
-    mean = {m: round(sum(r[m] for r in results) / len(results), 4) for m in METRICS}
-    results.append({"project": "mean", "model": "xgboost", "key_classes": "", **mean})
+        results.append({"project": test, "key_classes": sum(labels),
+                        **metrics(list(model.predict(x[:, columns])), labels)})
+    return results, gain
+
+
+def mean_row(results):
+    return {"project": "mean", "key_classes": "",
+            **{m: round(sum(r[m] for r in results) / len(results), 4) for m in METRICS}}
+
+
+def main():
+    sys.stdout.reconfigure(encoding="utf-8")
+    names, data = load()
+    print(f"{len(data)} systems, {len(names)} features")
+    results, gain = leave_one_system_out(data, list(range(len(names))))
+    results = [{"model": "xgboost", **r} for r in results + [mean_row(results)]]
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT, "w", newline="", encoding="utf-8") as f:
@@ -99,10 +110,9 @@ def main():
             line += f"   {'':9}" + "".join(f" {float(pagerank[r['project']][m]):.2f}" for m in METRICS)
         print(line)
 
-    total = sum(gain.values())
     print("\nmean importance (share of gain), top 10:")
-    for name, value in sorted(gain.items(), key=lambda kv: -kv[1])[:10]:
-        print(f"  {name:45} {value / total:.3f}")
+    for i in np.argsort(-gain)[:10]:
+        print(f"  {names[i]:45} {gain[i] / gain.sum():.3f}")
     print(f"\n-> {OUTPUT.relative_to(ROOT)}")
 
 

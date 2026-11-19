@@ -54,17 +54,20 @@ def hits_in_top(scores, labels, k):
     return sum(above) + (k - len(above)) * sum(tied) / len(tied)
 
 
+def metrics(scores, labels):
+    """Recall and precision at 20 and 30."""
+    result = {}
+    for k in CUTOFFS:
+        hits = hits_in_top(scores, labels, k)
+        result[f"recall_at_{k}"] = round(hits / sum(labels), 4)
+        result[f"precision_at_{k}"] = round(hits / k, 4)
+    return result
+
+
 def evaluate(rows):
     labels = [int(r["is_key_class"]) for r in rows]
-    results = []
-    for name, scores in heuristic_scores(rows).items():
-        result = {"heuristic": name, "key_classes": sum(labels)}
-        for k in CUTOFFS:
-            hits = hits_in_top(scores, labels, k)
-            result[f"recall_at_{k}"] = round(hits / sum(labels), 4)
-            result[f"precision_at_{k}"] = round(hits / k, 4)
-        results.append(result)
-    return results
+    return [{"heuristic": name, "key_classes": sum(labels), **metrics(scores, labels)}
+            for name, scores in heuristic_scores(rows).items()]
 
 
 def main():
